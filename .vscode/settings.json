@@ -1,0 +1,40 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll": "explicit",
+    "source.organizeImports": "explicit"
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "[javascript]": {
+    "editor.tabSize": 2
+  },
+  "[typescript]": {
+    "editor.tabSize": 2
+  },
+  "[typescriptreact]": {
+    "editor.tabSize": 2
+  },
+  "[html]": {
+    "editor.tabSize": 2
+  },
+  "[css]": {
+    "editor.tabSize": 2
+  },
+  "[json]": {
+    "editor.tabSize": 2
+  },
+  "[jsonc]": {
+    "editor.tabSize": 2
+  },
+  "[yaml]": {
+    "editor.tabSize": 2
+  },
+  "[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma"
+  },
+  "html.completion.attributeDefaultValue": "singlequotes"
+}
