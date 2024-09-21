@@ -5,6 +5,7 @@ import helmet from 'helmet';
 import hpp from 'hpp';
 
 import { ALLOWED_ORIGINS, IS_DEVELOPMENT, PORT } from 'config';
+import { initialize } from 'db';
 import apiRouter from 'routes';
 
 dotenv.config();
@@ -17,6 +18,8 @@ app.use(express.json({ limit: '1kb' }));
 app.use(hpp());
 app.disable('x-powered-by');
 
+initialize();
+
 app.get('/api/check', (_req, res) => {
   res.send('Hello World!');
 });
@@ -24,5 +27,5 @@ app.get('/api/check', (_req, res) => {
 app.use('/api', apiRouter);
 
 app.listen(PORT, () => {
-  return console.log(`Express is listening at http://localhost:${PORT}`);
+  return console.log(`Server is listening at http://localhost:${PORT}`);
 });
