@@ -3,11 +3,9 @@ import { Request, Response } from 'express';
 import db, { updateDB } from 'db';
 
 const addMovie = (req: Request, res: Response) => {
-  const { year, runtime, ...rest } = req.body;
-
   const { movies } = db;
 
-  const newMovie = { id: movies.length + 1, year: String(year), runtime: String(runtime), ...rest };
+  const newMovie = { id: movies.length + 1, ...req.body };
   movies.push(newMovie);
   try {
     updateDB();

@@ -1,0 +1,108 @@
+openapi: 3.0.0
+info:
+  title: TSH Movies API
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000/
+    description: Local development server
+paths:
+  /api/movies:
+    get:
+      summary: Get a random movie, or movies from specified genres.
+      parameters:
+        - name: duration
+          in: query
+          required: false
+          description: Movie runtime.
+          schema:
+            type: number
+        - name: genres
+          in: query
+          required: false
+          description: Movie genres.
+          example: '["Action", "Adventure", "Fantasy"]'
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MovieObject'
+        '422':
+          description: Params validation error.
+        default:
+          description: Unexpected error.
+    post:
+      summary: Add new movie to DB.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddMovieBody'
+      responses:
+        '200':
+          description: Movie added.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MovieObject'
+        '422':
+          description: Body validation error.
+        default:
+          description: Unexpected error.
+components:
+  schemas:
+    MovieObject:
+      type: object
+      properties:
+        id:
+          type: number
+        title:
+          type: string
+        year:
+          type: number
+        runtime:
+          type: number
+        genres:
+          type: array
+          items:
+            type: string
+        director:
+          type: string
+        actors:
+          type: string
+        plot:
+          type: string
+        posterUrl:
+          type: string
+    AddMovieBody:
+      type: object
+      properties:
+        title:
+          type: string
+        year:
+          type: number
+        runtime:
+          type: number
+        genres:
+          type: array
+          items:
+            type: string
+        director:
+          type: string
+        actors:
+          type: string
+        plot:
+          type: string
+        posterUrl:
+          type: string
+      required:
+        - title
+        - year
+        - runtime
+        - director
+        - genres
