@@ -49,7 +49,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/MovieObject'
+                type: object
+                properties:
+                  id:
+                  type: number
         '422':
           description: Body validation error.
         default:

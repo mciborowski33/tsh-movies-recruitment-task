@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 
 import db from 'db';
-import { checkGenre, countMatchingItems } from 'utils';
+import { checkGenre, countMatchingItems } from 'utilities';
 
 type RequestQuery = {
   duration?: number;
@@ -16,8 +16,7 @@ const getMovies = (req: Request<unknown, unknown, unknown, RequestQuery>, res: R
   let pickRandomMovie = true;
 
   if (genres && !checkGenre(genres)) {
-    res.status(422).json('Invalid genres data.');
-    return;
+    return res.status(422).json('Invalid genres data.');
   } else if (genres) {
     pickRandomMovie = false;
     filteredMovies = filteredMovies
@@ -33,11 +32,15 @@ const getMovies = (req: Request<unknown, unknown, unknown, RequestQuery>, res: R
     );
   }
 
+  if (!filteredMovies.length) {
+    return res.status(200).json([]);
+  }
+
   if (pickRandomMovie) {
     const randomMovie = filteredMovies[Math.floor(Math.random() * filteredMovies.length)];
-    res.status(200).json(randomMovie);
+    return res.status(200).json([randomMovie]);
   } else {
-    res.status(200).json(filteredMovies);
+    return res.status(200).json(filteredMovies);
   }
 };
 

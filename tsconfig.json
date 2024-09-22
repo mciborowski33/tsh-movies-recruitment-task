@@ -6,6 +6,7 @@
     "forceConsistentCasingInFileNames": true,
     "module": "commonjs",
     "esModuleInterop": true,
+    "allowJs": true,
     "moduleResolution": "node",
     "sourceMap": true,
     "baseUrl": "./src"

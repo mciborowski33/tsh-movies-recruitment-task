@@ -22,7 +22,6 @@ const validate =
       next();
     } catch (error: any) {
       if (error instanceof ZodError) {
-        console.log(error);
         res.status(422).send(error.issues);
       } else {
         res.status(422).send(error.message || 'Incorrect parameters.');

@@ -1,9 +1,8 @@
 import fs from 'fs';
 
+import { DB_FILE_PATH } from 'config';
 import { DB } from 'types/db';
-import { Movie } from 'types/movie';
-
-const DB_FILE_PATH = `${__dirname}/db.json`;
+import { Movie, MovieData } from 'types/movie';
 
 const db: DB = {
   genres: [],
@@ -23,16 +22,22 @@ export const initialize = () => {
   });
 };
 
-export const updateDB = () => {
+export const updateDB = (newMovie: MovieData) => {
+  const { movies, genres } = db;
+
   try {
+    const id = movies.length + 1;
+    movies.push({ id, ...newMovie });
+
     const dbToSave = {
-      genres: db.genres,
-      movies: db.movies.map(({ year, runtime, ...rest }) => {
+      genres,
+      movies: movies.map(({ year, runtime, ...rest }) => {
         return { year: String(year), runtime: String(runtime), ...rest };
       }),
     };
 
     fs.writeFileSync(DB_FILE_PATH, JSON.stringify(dbToSave, null, 2), 'utf8');
+    return id;
   } catch (error: any) {
     throw new Error(`DB Write Error: ${error.message}`);
   }

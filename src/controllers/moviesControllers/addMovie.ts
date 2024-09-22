@@ -1,20 +1,16 @@
 import { Request, Response } from 'express';
 
-import db, { updateDB } from 'db';
+import { updateDB } from 'db';
 
 const addMovie = (req: Request, res: Response) => {
-  const { movies } = db;
+  const newMovie = req.body;
 
-  const newMovie = { id: movies.length + 1, ...req.body };
-  movies.push(newMovie);
   try {
-    updateDB();
+    const id = updateDB(newMovie);
+    return res.status(200).json({ id });
   } catch (error: any) {
-    res.status(500).json(error.message);
-    return;
+    return res.status(500).json(error.message);
   }
-
-  res.status(200).json(newMovie);
 };
 
 export default addMovie;

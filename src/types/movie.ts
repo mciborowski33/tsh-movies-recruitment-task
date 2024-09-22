@@ -1,5 +1,4 @@
-export interface Movie {
-  id: number;
+export interface MovieData {
   title: string;
   year: number;
   runtime: number;
@@ -8,4 +7,8 @@ export interface Movie {
   actors?: string;
   plot?: string;
   posterUrl?: string;
+}
+
+export interface Movie extends MovieData {
+  id: number;
 }

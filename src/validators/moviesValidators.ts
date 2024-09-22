@@ -1,4 +1,4 @@
-import { checkGenre } from 'utils';
+import { checkGenre } from 'utilities';
 import { z } from 'zod';
 
 export const getMoviesSchema = {
@@ -13,7 +13,7 @@ export const getMoviesSchema = {
             throw new Error('Invalid genres data.');
           }
         }
-      }, z.string().array())
+      }, z.string().array().min(1))
       .optional(),
   }),
 };
@@ -30,6 +30,7 @@ export const newMovieSchema = {
     genres: z
       .string()
       .array()
+      .min(1)
       .refine((items) => new Set(items).size === items.length, {
         message: 'Provided genres must be unique.',
       })
