@@ -9,8 +9,9 @@ export const getMoviesSchema = {
         if (typeof obj === 'string') {
           try {
             return JSON.parse(obj);
-          } catch (error) {
-            throw new Error('Invalid genres data.');
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          } catch (error: any) {
+            throw new Error(`Invalid genres data. ${error.message}`);
           }
         }
       }, z.string().array().min(1))

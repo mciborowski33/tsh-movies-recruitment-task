@@ -26,7 +26,7 @@ describe('Data from json file should be imported and updated without errors.', (
   });
 
   it('Data imported correctly.', () => {
-    expect(db.genres).toBeInstanceOf(Array<String>);
+    expect(db.genres).toBeInstanceOf(Array<string>);
     expect(db.movies).toBeInstanceOf(Array<Movie>);
   });
 

@@ -38,6 +38,7 @@ export const updateDB = (newMovie: MovieData) => {
 
     fs.writeFileSync(DB_FILE_PATH, JSON.stringify(dbToSave, null, 2), 'utf8');
     return id;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     throw new Error(`DB Write Error: ${error.message}`);
   }

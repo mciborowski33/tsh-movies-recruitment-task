@@ -5,6 +5,7 @@
   "main": "server.ts",
   "scripts": {
     "build": "tsc && tsc-alias",
+    "start": "node dist/server.js",
     "dev": "nodemon",
     "test": "jest",
     "testall": "jest --verbose",

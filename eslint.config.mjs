@@ -22,29 +22,6 @@ export default [
   },
   {
     rules: {
-      '@typescript-eslint/consistent-type-imports': [
-        'error',
-        {
-          prefer: 'type-imports',
-        },
-      ],
-      'no-restricted-imports': [
-        'error',
-        {
-          patterns: ['../'],
-        },
-      ],
-      'import/order': [
-        'error',
-        {
-          groups: ['builtin', 'external', 'internal', ['sibling', 'parent'], 'index', 'unknown'],
-          'newlines-between': 'always',
-          alphabetize: {
-            order: 'asc',
-            caseInsensitive: true,
-          },
-        },
-      ],
       'prettier/prettier': [
         'error',
         {

@@ -20,6 +20,7 @@ const validate =
         req.query = validators.query.parse(req.query);
       }
       next();
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       if (error instanceof ZodError) {
         res.status(422).send(error.issues);
