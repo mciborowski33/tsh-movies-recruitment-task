@@ -1,5 +1,6 @@
-import { checkGenre } from 'utilities';
 import { z } from 'zod';
+
+import { checkGenre } from 'utilities';
 
 export const getMoviesSchema = {
   query: z.object({

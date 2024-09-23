@@ -14,6 +14,7 @@ paths:
           in: query
           required: false
           description: Movie runtime.
+          example: 120
           schema:
             type: number
         - name: genres
@@ -52,7 +53,7 @@ paths:
                 type: object
                 properties:
                   id:
-                  type: number
+                    type: number
         '422':
           description: Body validation error.
         default:

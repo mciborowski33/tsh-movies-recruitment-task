@@ -9,6 +9,13 @@ const db: DB = {
   movies: [],
 };
 
+/*
+Note: db.json file contains runtimes and years data in string format, 
+while task defines them as numbers. In order to keep coherent json schema 
+and fulfill the task, I've decided to convert those values to numbers 
+on import, and save them as strings while updating the file.
+*/
+
 export const initialize = () => {
   const dbObject = JSON.parse(fs.readFileSync(DB_FILE_PATH, 'utf8'));
   const { genres, movies } = dbObject;
